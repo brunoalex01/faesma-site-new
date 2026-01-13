@@ -881,8 +881,8 @@ textarea.form-control {
     to { transform: rotate(360deg); }
 }
 
-.headerlogo {
+.header-logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
 }

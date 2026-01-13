@@ -153,7 +153,7 @@ include __DIR__ . '/includes/header.php';
                         </div>
                         <div>
                             <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">Endereço</h4>
-                            <p style="color: var(--color-gray-600); margin: 0;">
+                            <p style="color: var(--color-secondary); margin: 0;">
                                 <?php echo $site_settings['site_address'] ?? ''; ?>
                             </p>
                         </div>
@@ -161,7 +161,7 @@ include __DIR__ . '/includes/header.php';
                     
                     <!-- Phone -->
                     <div style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); display: flex; gap: 1rem;">
-                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i class="fas fa-phone" style="color: white; font-size: 1.2rem;"></i>
                         </div>
                         <div>
@@ -174,7 +174,7 @@ include __DIR__ . '/includes/header.php';
                     
                     <!-- Email -->
                     <div style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); display: flex; gap: 1rem;">
-                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i class="fas fa-envelope" style="color: white; font-size: 1.2rem;"></i>
                         </div>
                         <div>
