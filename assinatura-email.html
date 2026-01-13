@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Assinatura de E-mail - FAESMA</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(150deg, #0d0158, #008125);
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-dow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 25px;
+        }
+        h1 {
+            text-align: center;
+            color: #0d0158;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"] {
+            padding: 10px;
+            border: 1px solid #bdbdbd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .preview {
+            background: #f9f9f9;
+            border: 1px solid #0d0158;
+            border-radius: 6px;
+            padding: 20px;
+            min-height: 200px;
+        }
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .signature img {
+            width: 150px;
+            height: auto;
+        }
+        .signature-info {
+            color: #222;
+            font-size: 15px;
+        }
+        .signature-info strong {
+            color: #0d0158;
+            font-size: 17px;
+        }
+        .signature-info .lattes {
+            display: block;
+            margin-top: 4px;
+            font-size: 13px;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 12px; }
+            .signature { flex-direction: column; align-items: flex-start; }
+            .signature img { width: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="assets\img\FAESMA ASSINATURA LOGO.png" alt="FAESMA Logo" width=200px>
+        </div>
+        <h1>Gerador de Assinatura de E-mail</h1>
+        <h4 style="text-align: center; color: #008125;">Preencha os dados e gere sua assinatura de e-mail FAESMA</h4>
+        <form id="signatureForm" autocomplete="off">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div>
+                <label for="cargo">Setor ou Cargo</label>
+                <input type="text" id="cargo" name="cargo" required>
+            </div>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="ddd">DDD</label>
+                <input type="text" id="ddd" name="ddd" maxlength="2" pattern="\d{2}" required>
+            </div>
+            <div>
+                <label for="numero">Número</label>
+                <input type="text" id="numero" name="numero" maxlength="9" pattern="\d{8,9}" required>
+            </div>
+            <div>
+                <label for="lattes">Link Currículo Lattes <span style="font-weight:normal; color:#888;">(opcional)</span></label>
+                <input type="url" id="lattes" name="lattes" placeholder="https://lattes.cnpq.br/">
+            </div>
+        </form>
+        <h2 style="font-size:1.1rem; color:#0d0158; margin-bottom:10px;">Visualização Prévia</h2>
+        <div class="preview" id="preview">
+            <div class="signature">
+                <img src="assets\img\FAESMA ASSINATURA LOGO.png" alt="FAESMA Logo" width=300px>
+                <div class="signature-info">
+                    <strong>Seu Nome</strong><br>
+                    Setor ou Cargo<br>
+                    <span><b>E-mail:</b> seu@email.com</span><br>
+                    <span><b>Tel:</b> (00) 00000-0000</span>
+                    <span class="lattes"></span>
+                </div>
+            </div>
+        </div>
+        <div class="button-dow">
+            <button id="download-signature" style="margin-top:18px; background:#008125; color:#fff; border:none; border-radius:4px; padding:10px 18px; font-size:1rem; cursor:pointer;">Baixar assinatura como PNG</button>
+        </div>
+    </div>
+    <script>
+        // Atualiza a visualização prévia da assinatura
+        const form = document.getElementById('signatureForm');
+        const preview = document.getElementById('preview');
+        const nome = document.getElementById('nome');
+        const cargo = document.getElementById('cargo');
+        const email = document.getElementById('email');
+        const ddd = document.getElementById('ddd');
+        const numero = document.getElementById('numero');
+        const lattes = document.getElementById('lattes');
+
+        // Função para baixar a assinatura como PNG
+        document.getElementById('download-signature').addEventListener('click', function() {
+            // Carrega html2canvas se não estiver carregado
+            if (typeof html2canvas === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+                script.onload = downloadSignature;
+                document.body.appendChild(script);
+            } else {
+                downloadSignature();
+            }
+            function downloadSignature() {
+                const signatureDiv = preview.querySelector('.signature');
+                html2canvas(signatureDiv, { backgroundColor: null }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'assinatura-email-faesma.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            }
+        });
+
+        function updatePreview() {
+            const nomeVal = nome.value || 'Seu Nome';
+            const cargoVal = cargo.value || 'Setor ou Cargo';
+            const emailVal = email.value || 'seu@email.com';
+            const dddVal = ddd.value || '00';
+            const numeroVal = numero.value || '00000-0000';
+            let numeroFormatado = numeroVal;
+            if (numeroVal.length === 9) {
+                numeroFormatado = numeroVal.replace(/(\d{5})(\d{4})/, '$1-$2');
+            } else if (numeroVal.length === 8) {
+                numeroFormatado = numeroVal.replace(/(\d{4})(\d{4})/, '$1-$2');
+            }
+            const lattesVal = lattes.value;
+            const lattesHtml = lattesVal ? `<a class="lattes" href="${lattesVal}" target="_blank">Currículo Lattes</a>` : '';
+
+            preview.innerHTML = `
+                <div class="signature">
+                    <img src="assets/img/FAESMA ASSINATURA LOGO.png" alt="FAESMA Logo">
+                    <div class="signature-info">
+                        <strong>${nomeVal}</strong><br>
+                        ${cargoVal}<br>
+                        <span>E-mail: ${emailVal}</span><br>
+                        <span>Tel: (${dddVal}) ${numeroFormatado}</span>
+                        ${lattesHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        form.addEventListener('input', updatePreview);
+        // Inicializa preview
+        updatePreview();
+    </script>
+</body>
+</html>
