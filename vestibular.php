@@ -25,11 +25,11 @@ include __DIR__ . '/includes/header.php';
 <section
     style="background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-light)); color: white; padding: 5rem 0; text-align: center;">
     <div class="container">
-        <h1 style="color: white; margin-bottom: 1rem; font-size: clamp(2rem, 5vw, 3.5rem);">Processo Seletivo 2026</h1>
+        <h1 style="color: white; margin-bottom: 1rem; font-size: clamp(2rem, 5vw, 3.5rem);">Processo Seletivo</h1>
         <p style="font-size: 1.3rem; color: rgba(255,255,255,0.95); margin-bottom: 2rem;">
             Realize seu sonho de cursar ensino superior na FAESMA
         </p>
-        <a href="#inscricao" class="btn btn-primary btn-large">
+        <a href="https://app.faesma.com.br/captacao/public/selecao-curso" class="btn btn-primary btn-large">
             <i class="fas fa-pen"></i> Inscreva-se Agora
         </a>
     </div>
@@ -40,7 +40,7 @@ include __DIR__ . '/includes/header.php';
     <div class="container">
         <div style="text-align: center; margin-bottom: 3rem;">
             <h2 style="color: var(--color-primary);">Como Funciona</h2>
-            <h4 style="color: var(--color-secondary); font-size: 1.1rem;">Processo de inscrição nos cursos de Graduação e Pós-Graduação</h4>
+            <h4 style="color: var(--color-secondary); font-size: 1.1rem;">Processo de inscrição nos cursos de Graduação</h4>
         </div>
 
         <div class="grid grid-4">
@@ -59,111 +59,18 @@ include __DIR__ . '/includes/header.php';
                     style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; color: white;">
                     2
                 </div>
-                <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">Matrícula</h4>
-                <p style="color: var(--color-secondary); font-size: 0.9rem;">Efetue sua matrícula e comece a estudar</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Enrollment Form -->
-<section id="inscricao" class="section">
-    <div class="container">
-        <div style="max-width: 700px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 2.5rem;">
-                <h2 style="color: var(--color-primary);">Faça sua Pré-Inscrição</h2>
-                <p style="color: var(--color-secondary); font-size: 1.1rem;">Preencha o formulário abaixo para iniciar
-                    seu processo</p>
+                <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">Seletivo</h4>
+                <p style="color: var(--color-secondary); font-size: 0.9rem;">Participe do nosso processo seletivo online</p>
             </div>
 
-            <form method="POST" action="processar-inscricao.php" class="validate-form"
-                style="background: white; padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
-                <h3 style="color: var(--color-primary); margin-bottom: 1.5rem; font-size: 1.2rem;">Dados Pessoais</h3>
-
-                <div class="form-group">
-                    <label for="nome" class="form-label">Nome Completo *</label>
-                    <input type="text" id="nome" name="nome" class="form-control" required>
+            <div style="text-align: center;">
+                <div
+                    style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; color: white;">
+                    3
                 </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div class="form-group">
-                        <label for="cpf" class="form-label">CPF *</label>
-                        <input type="text" id="cpf" name="cpf" class="form-control" data-mask="cpf" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="data_nascimento" class="form-label">Data de Nascimento *</label>
-                        <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" required>
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
-                    <div class="form-group">
-                        <label for="email" class="form-label">E-mail *</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="celular" class="form-label">Celular *</label>
-                        <input type="tel" id="celular" name="celular" class="form-control" required>
-                    </div>
-                </div>
-
-                <h3 style="color: var(--color-primary); margin: 2rem 0 1.5rem; font-size: 1.2rem;">Curso de Interesse
-                </h3>
-
-                <div class="form-group">
-                    <label for="curso" class="form-label">Curso *</label>
-                    <select id="curso" name="curso_id" class="form-control form-select" required>
-                        <option value="">Selecione um curso</option>
-                        <?php
-                        $all_courses = getCourses(['status' => 'ativo']);
-                        $last_category = '';
-                        foreach ($all_courses as $course):
-                            if ($last_category !== $course['categoria_nome']):
-                                if ($last_category !== '')
-                                    echo '</optgroup>';
-                                echo '<optgroup label="' . htmlspecialchars($course['categoria_nome']) . '">';
-                                $last_category = $course['categoria_nome'];
-                            endif;
-                            ?>
-                            <option value="<?php echo $course['id']; ?>" <?php echo ($selected_course && $selected_course['id'] === $course['id']) ? 'selected' : ''; ?>>
-                                <?php echo htmlspecialchars($course['nome']); ?>
-                            </option>
-                            <?php
-                        endforeach;
-                        if ($last_category !== '')
-                            echo '</optgroup>';
-                        ?>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="modalidade" class="form-label">Forma de Ingresso *</label>
-                    <select id="modalidade" name="forma_ingresso" class="form-control form-select" required>
-                        <option value="">Selecione</option>
-                        <option value="Prova FAESMA">Prova do Vestibular FAESMA</option>
-                        <option value="Nota ENEM">Nota do ENEM</option>
-                        <option value="Transferência">Transferência de outra instituição</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                        <input type="checkbox" name="termos" required>
-                        <span>Declaro que li e aceito os <a href="<?php echo BASE_URL; ?>/termos.php" target="_blank"
-                                style="color: var(--color-secondary);">termos e condições</a> *</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1rem;">
-                    <i class="fas fa-check"></i> Finalizar Pré-Inscrição
-                </button>
-
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--color-gray-600); font-size: 0.9rem;">
-                    * Campos obrigatórios
-                </p>
-            </form>
+                <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">Resultado</h4>
+                <p style="color: var(--color-secondary); font-size: 0.9rem;">Após feito o processo seletivo, aguardade a data de resultado onde entraremos em contato informando o resultado</p>
+            </div>
         </div>
     </div>
 </section>

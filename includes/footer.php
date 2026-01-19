@@ -18,7 +18,7 @@ $site_settings = getAllSettings();
                 <!-- About Column -->
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="assets/img/FAESMA SEM FUNDO LETRA BRANCA.png" width=175px>
+                        <img src="assets/img/FAESMA SEM FUNDO LETRA BRANCA.png" width=200px>
                     </div>
                     <p class="footer-about">
                         Formando profissionais de excelência para o mercado de trabalho com ensino de qualidade e
@@ -47,7 +47,7 @@ $site_settings = getAllSettings();
                         <li><a href="<?php echo BASE_URL; ?>/">Início</a></li>
                         <li><a href="<?php echo BASE_URL; ?>/cursos.php">Cursos</a></li>
                         <li><a href="<?php echo BASE_URL; ?>/sobre.php">Sobre Nós</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>/vestibular.php">Inscreva-se</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/vestibular.php">Processo Seletivo</a></li>
                     </ul>
                 </div>
 
@@ -89,6 +89,10 @@ $site_settings = getAllSettings();
                             <a href="mailto:<?php echo SITE_EMAIL; ?>">
                                 <?php echo SITE_EMAIL; ?>
                             </a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-building-columns"></i>
+                            <p>CNPJ: 56.939.781/0001-39</p>
                         </li>
                     </ul>
                 </div>

@@ -31,7 +31,7 @@ $site_settings = getAllSettings();
         content="<?php echo $meta_description ?? 'Faculdade Alcance de Ensino Superior do Maranhão'; ?>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo getCurrentUrl(); ?>">
-    <link rel="icon" type="favicon.ico" href="?php echo ASSETS_URL; ?>assets/img/favicon.ico">
+    <link rel="icon" type="favicon.ico" href="<?php echo ASSETS_URL; ?>assets/img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -97,7 +97,7 @@ $site_settings = getAllSettings();
                                 class="<?php echo (basename($_SERVER['PHP_SELF']) == 'sobre.php') ? 'active' : ''; ?>">Sobre</a>
                         </li>
                         <li><a href="<?php echo BASE_URL; ?>/vestibular.php"
-                                class="<?php echo (basename($_SERVER['PHP_SELF']) == 'vestibular.php') ? 'active' : ''; ?>">Inscreva-se</a>
+                                class="<?php echo (basename($_SERVER['PHP_SELF']) == 'vestibular.php') ? 'active' : ''; ?>">Processo Seletivo</a>
                         </li>
                         <li><a href="<?php echo BASE_URL; ?>/contato.php"
                                 class="<?php echo (basename($_SERVER['PHP_SELF']) == 'contato.php') ? 'active' : ''; ?>">Contato</a>

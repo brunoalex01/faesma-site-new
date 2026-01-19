@@ -126,8 +126,8 @@
                 <input type="text" id="numero" name="numero" maxlength="9" pattern="\d{8,9}" required>
             </div>
             <div>
-                <label for="lattes">Link Currículo Lattes: <span style="font-weight:normal; color:#888;">(opcional)</span></label>
-                <input type="url" id="lattes" name="lattes" placeholder="lattes.cnpq.br/">
+                <label for="lattes">Link Currículo Lattes: <span style="color: grey">(sem https)</span></label>
+                <input type="url" id="lattes" name="lattes" placeholder="lattes.cnpq.br/" required>
             </div>
         </form>
         <h2 style="font-size:1.1rem; color:#0d0158; margin-bottom:10px;">Visualização Prévia</h2>
@@ -139,7 +139,7 @@
                     Setor ou Cargo<br>
                     <span><b>E-mail:</b> seu@email.com</span><br>
                     <span><b>Tel:</b> (00) 00000-0000</span>
-                    <span class="lattes"></span>
+                    <span class="lattes">lattes.cnpq.br/</span>
                 </div>
             </div>
         </div>

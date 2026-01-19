@@ -75,7 +75,7 @@ include __DIR__ . '/includes/header.php';
 
             <div class="feature-card" style="text-align: center; padding: 2rem;">
                 <div
-                    style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                     <i class="fas fa-certificate" style="font-size: 2.5rem; color: white;"></i>
                 </div>
                 <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Reconhecimento MEC</h3>
